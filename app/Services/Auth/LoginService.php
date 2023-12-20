@@ -14,11 +14,11 @@ class LoginService implements Service, AuthServiceInterface
 {
 
     protected const RULES = [
-        'login' => ['required', 'string'],
+        'email' => ['required', 'email'],
         'password' => ['required', 'string'],
     ];
 
-    protected string $login = '';
+    protected string $email = '';
     protected string $password = '';
 
     protected array $errors = [];
@@ -26,7 +26,7 @@ class LoginService implements Service, AuthServiceInterface
 
     public function init(array $data = []): static
     {
-        $this->login = $data['login'] ?? '';
+        $this->email = $data['email'] ?? '';
         $this->password = $data['password'] ?? '';
         return $this;
     }
@@ -35,7 +35,7 @@ class LoginService implements Service, AuthServiceInterface
     {
 
         $validator = Validator::make([
-            'login' => $this->login,
+            'email' => $this->email,
             'password' => $this->password,
         ], static::RULES);
 
@@ -60,7 +60,6 @@ class LoginService implements Service, AuthServiceInterface
             $this->fail = true;
             $this->errors = [__('Auth error')];
         }
-
     }
 
     public function getErrors(): array
@@ -83,7 +82,7 @@ class LoginService implements Service, AuthServiceInterface
 
     private function userExists()
     {
-        $user = User::where('login', $this->login)->first();
+        $user = User::where('email', $this->email)->first();
 
         if ($user && Hash::check($this->password, $user->password)) {
             return true;
@@ -93,7 +92,6 @@ class LoginService implements Service, AuthServiceInterface
 
     private function getCredentials()
     {
-        return ['login' => $this->login, 'password' => $this->password];
+        return ['login' => $this->email, 'password' => $this->password];
     }
-
 }

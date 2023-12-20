@@ -18,13 +18,11 @@ use Illuminate\Support\Facades\Validator;
 class RegisterService implements Service, AuthServiceInterface
 {
     protected const RULES = [
-        'login' => ['required', 'string'],
         'email' => ['required', 'email'],
         'password' => ['required', 'confirmed'],
         'password_confirmation' => ['required'],
     ];
 
-    protected string $login = '';
     protected string $email = '';
     protected string $password = '';
     protected string $password_confirmation = '';
@@ -37,7 +35,6 @@ class RegisterService implements Service, AuthServiceInterface
 
     public function init(array $data = []): static
     {
-        $this->login = $data['login'] ?? '';
         $this->email = $data['email'] ?? '';
         $this->password = $data['password'] ?? '';
         $this->password_confirmation = $data['password_confirmation'] ?? '';
@@ -48,7 +45,6 @@ class RegisterService implements Service, AuthServiceInterface
     {
 
         $validator = Validator::make([
-            'login' => $this->login,
             'email' => $this->email,
             'password' => $this->password,
             'password_confirmation' => $this->password_confirmation,
@@ -59,10 +55,6 @@ class RegisterService implements Service, AuthServiceInterface
             return false;
         }
 
-        if ($this->loginExists()) {
-            $this->errors = [__('User with this login already exists')];
-            return false;
-        }
 
         if ($this->emailExists()) {
             $this->errors = [__('User with this email already exists')];
@@ -78,7 +70,6 @@ class RegisterService implements Service, AuthServiceInterface
             DB::beginTransaction();
 
             $this->user = User::create([
-                'login' => $this->login,
                 'email' => $this->email,
                 'password' => Hash::make($this->password),
                 'referrer_id' => $this->getReferrer(),
@@ -92,13 +83,8 @@ class RegisterService implements Service, AuthServiceInterface
             $this->errors = [__('Registration error')];
             throw new \Exception($e->getMessage());
         }
-
     }
 
-    public function createSocials(): void
-    {
-        UserSocial::create(['user_id' => $this->user->id]);
-    }
 
     public function createBalance(): void
     {
@@ -145,10 +131,6 @@ class RegisterService implements Service, AuthServiceInterface
         return $code;
     }
 
-    private function loginExists()
-    {
-        return User::where('login', $this->login)->exists();
-    }
 
     private function emailExists()
     {
@@ -163,6 +145,4 @@ class RegisterService implements Service, AuthServiceInterface
         }
         return null;
     }
-
 }
-

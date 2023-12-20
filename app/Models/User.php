@@ -6,7 +6,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -56,7 +55,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'login',
         'email',
         'password',
         'referrer_id',
@@ -87,14 +85,10 @@ class User extends Authenticatable
         'blocked' => 'boolean',
     ];
 
-    public function social(): HasOne
-    {
-        return $this->hasOne(UserSocial::class);
-    }
 
-    public function balance(): HasOne
+    public function balance(): HasMany
     {
-        return $this->hasOne(Balance::class);
+        return $this->hasMany(Balance::class);
     }
 
     public function balanceAmount(): ?float
@@ -110,15 +104,5 @@ class User extends Authenticatable
     public function referrals(): HasMany
     {
         return $this->hasMany(User::class, 'referrer_id', 'id');
-    }
-
-    public function banners(): HasMany
-    {
-        return $this->hasMany(Banner::class);
-    }
-
-    public function links(): HasMany
-    {
-        return $this->hasMany(Link::class);
     }
 }

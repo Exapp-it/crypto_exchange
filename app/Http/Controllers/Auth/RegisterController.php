@@ -24,7 +24,6 @@ class RegisterController extends Controller
             return response()->json(['error' => Register::getErrors()], 422);
         }
 
-        Register::createSocials();
         Register::createBalance();
         Register::welcomeMailNotify();
         Telegram::init();
@@ -36,5 +35,4 @@ class RegisterController extends Controller
         Telegram::sendMessage($message);
         return Register::responseSuccess();
     }
-
 }

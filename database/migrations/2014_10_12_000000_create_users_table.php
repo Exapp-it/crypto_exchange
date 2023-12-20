@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
@@ -13,7 +14,6 @@ return new class extends Migration {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();
-            $table->string('login')->unique();
             $table->string('password');
 
             $table->unsignedBigInteger('referrer_id')->nullable();
@@ -22,7 +22,6 @@ return new class extends Migration {
             $table->boolean('active')->default(true);
             $table->boolean('blocked')->default(false);
 
-            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
 
@@ -32,7 +31,6 @@ return new class extends Migration {
                 ->onDelete('set null');
 
             $table->index('email');
-            $table->index('login');
             $table->index('referrer_id');
             $table->index('ref_code');
         });
