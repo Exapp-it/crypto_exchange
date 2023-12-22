@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('register-service', function () {
             return new RegisterService();
         });
-        $this->app->bind('telegram-bot', function () {
+        $this->app->bind('telegram', function () {
             return new Telegram();
         });
     }

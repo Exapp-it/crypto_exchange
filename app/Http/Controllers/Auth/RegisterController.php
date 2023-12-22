@@ -29,7 +29,6 @@ class RegisterController extends Controller
         Telegram::init();
 
         $message = __('Register new user') . PHP_EOL .
-            __('Username') . ': ' . Register::user()->login . PHP_EOL .
             __('Email') . ': ' . Register::user()->email;
 
         Telegram::sendMessage($message);

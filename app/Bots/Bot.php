@@ -2,10 +2,10 @@
 
 namespace App\Bots;
 
-use App\Interfaces\BotInterface;
+use App\Contracts\BotContract;
 use Illuminate\Support\Facades\Log;
 
-abstract class Bot implements BotInterface
+abstract class Bot implements BotContract
 {
     protected string|null $token;
     protected string $name;

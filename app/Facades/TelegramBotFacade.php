@@ -8,6 +8,6 @@ class TelegramBotFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'telegram-bot';
+        return 'telegram';
     }
 }
