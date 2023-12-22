@@ -2,8 +2,7 @@
 
 namespace App\Providers;
 
-use App\Bots\TelegramBot;
-use App\Models\Link;
+use App\Bots\Telegram;
 use App\Services\Auth\LoginService;
 use App\Services\Auth\RegisterService;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
             return new RegisterService();
         });
         $this->app->bind('telegram-bot', function () {
-            return new TelegramBot();
+            return new Telegram();
         });
     }
 

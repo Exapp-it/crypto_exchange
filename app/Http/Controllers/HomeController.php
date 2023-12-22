@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Currency;
 use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -11,8 +11,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-//        6498877845
-        return view('home.index');
+        return view('home.index', [
+            'currencies' => Currency::all(),
+        ]);
     }
 
     public function about()

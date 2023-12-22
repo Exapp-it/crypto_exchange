@@ -26,24 +26,12 @@ class MainController extends Controller
         $statistics = (object)[
             'usersCount' => $statisticService->getUserCount(),
             'usersCountToday' => $statisticService->getUserCountToday(),
-            'merchantsCount' => $statisticService->getMerchantsCount(),
-            'merchantsCountToday' => $statisticService->getMerchantsCountToday(),
-            'approvedPaymentsSum' => $statisticService->getApprovedPaymentsSum(),
-            'approvedPaymentsSumToday' => $statisticService->getApprovedPaymentsSumToday(),
-            'approvedPaymentsSumLast7Days' => $statisticService->getApprovedPaymentsSumLast7Days(),
-            'approvedPaymentsSumThisMonth' => $statisticService->getApprovedPaymentsSumThisMonth(),
-            'approvedWithdrawalsSum' => $statisticService->getApprovedWithdrawalsSum(),
-            'approvedWithdrawalsSumToday' => $statisticService->getApprovedWithdrawalsSumToday(),
-            'approvedWithdrawalsSumLast7Days' => $statisticService->getApprovedWithdrawalsSumLast7Days(),
-            'approvedWithdrawalsSumThisMonth' => $statisticService->getApprovedWithdrawalsSumThisMonth(),
         ];
 
         return view('admin.index', ['statistics' => $statistics]);
     }
 
-    /**
-     * @return View|Application|Factory|\Illuminate\Contracts\Foundation\Application
-     */
+
     public function users(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $users = User::query()->paginate(10);
@@ -52,34 +40,12 @@ class MainController extends Controller
     }
 
 
-    /**
-     * @return View|Application|Factory|\Illuminate\Contracts\Foundation\Application
-     */
-    public function history(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
-    {
-        $payments = Payment::query()->orderByDesc('created_at')->get();
-        $withdrawals = Withdrawal::query()->orderByDesc('created_at')->get();
 
-        $operations = new Collection($payments->merge($withdrawals));
-        $operations = $operations->sortByDesc('created_at');
 
-        $currentPage = LengthAwarePaginator::resolveCurrentPage();
-        $perPage = 10;
-        $currentPageItems = $operations->slice(($currentPage - 1) * $perPage, $perPage)->all();
-        $operations = new LengthAwarePaginator($currentPageItems, $operations->count(), $perPage);
+    // public function transaction($id): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    // {
+    //     $transaction = Transaction::find($id);
 
-        return view('admin.history', ['operations' => $operations]);
-    }
-
-    /**
-     * @param $id
-     * @return View|Application|Factory|\Illuminate\Contracts\Foundation\Application
-     */
-    public function transaction($id): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
-    {
-        $transaction = Transaction::find($id);
-
-        return view('admin.transaction', ['transaction' => $transaction]);
-    }
-
+    //     return view('admin.transaction', ['transaction' => $transaction]);
+    // }
 }

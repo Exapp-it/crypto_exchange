@@ -3,7 +3,6 @@ import axios from "axios";
 export default function RegisterComponent() {
     return {
         state: {
-            login: "",
             email: "",
             password: "",
             password_confirmation: "",
@@ -23,7 +22,6 @@ export default function RegisterComponent() {
 
         clearErrors() {
             this.state.errors = {
-                login: "",
                 email: "",
                 password: "",
                 password_confirmation: "",
@@ -100,7 +98,6 @@ export default function RegisterComponent() {
         async registerAction() {
             try {
                 const response = await axios.post(routes.register, {
-                    login: this.state.login,
                     email: this.state.email,
                     password: this.state.password,
                     password_confirmation: this.state.password_confirmation,

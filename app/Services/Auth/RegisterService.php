@@ -2,11 +2,9 @@
 
 namespace App\Services\Auth;
 
-use App\Interfaces\AuthServiceInterface;
-use App\Interfaces\Service;
 use App\Models\Balance;
+use App\Models\Currency;
 use App\Models\User;
-use App\Models\UserSocial;
 use App\Notifications\WelcomeNotify;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +13,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
-class RegisterService implements Service, AuthServiceInterface
+class RegisterService
 {
     protected const RULES = [
         'email' => ['required', 'email'],
@@ -88,7 +86,12 @@ class RegisterService implements Service, AuthServiceInterface
 
     public function createBalance(): void
     {
-        Balance::create(['user_id' => $this->user->id]);
+        $currencies = Currency::where('status', true)->get();
+        if ($currencies) {
+            foreach ($currencies as $currency) {
+                Balance::create(['user_id' => $this->user->id, 'currency' => $currency->symbol]);
+            }
+        }
     }
 
     public function user(): User

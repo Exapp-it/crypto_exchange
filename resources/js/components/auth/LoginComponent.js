@@ -3,10 +3,10 @@ import axios from "axios";
 export default function LoginComponent() {
     return {
         state: {
-            login: "",
+            email: "",
             password: "",
             errors: {
-                login: "",
+                email: "",
                 password: "",
             },
             message: {
@@ -19,10 +19,8 @@ export default function LoginComponent() {
 
         clearErrors() {
             this.state.errors = {
-                login: "",
                 email: "",
                 password: "",
-                password_confirmation: "",
             };
         },
 
@@ -93,10 +91,8 @@ export default function LoginComponent() {
         async loginAction() {
             try {
                 const response = await axios.post(routes.login, {
-                    login: this.state.login,
                     email: this.state.email,
                     password: this.state.password,
-                    password_confirmation: this.state.password_confirmation,
                     _token: csrfToken,
                 });
 

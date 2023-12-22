@@ -2,7 +2,7 @@
 
 namespace App\Bots;
 
-class TelegramBot extends Bot
+class Telegram extends Bot
 {
     protected string $chatId;
     private string $baseUrl = 'https://api.telegram.org/bot';

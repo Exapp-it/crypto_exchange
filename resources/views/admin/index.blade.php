@@ -42,13 +42,13 @@
                         </div>
 
                         <div class="text-3xl">
-                            {{$statistics->merchantsCount}}
+                            {{$statistics->usersCount}}
                             <span class="text-xl font-semibold float-right">{{__('Шт.')}}</span>
                         </div>
 
                         <div class="flex items-center space-x-1 rtl:space-x-reverse text-sm font-medium text-green-600">
 
-                            <span>+ {{$statistics->merchantsCountToday}} {{__('Сегодня')}}</span>
+                            <span>+ {{$statistics->usersCountToday}} {{__('Сегодня')}}</span>
 
                             <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                  fill="currentColor"
@@ -71,7 +71,7 @@
                         </div>
 
                         <div class="text-3xl">
-                            {{moneyFormat($statistics->approvedPaymentsSum)}}
+                            {{moneyFormat($statistics->usersCount)}}
                             <span
                                 class="text-xl font-semibold float-right">{{config('payment.default_currency.name')}}</span>
                         </div>
@@ -79,7 +79,7 @@
 
                         <div class="flex items-center space-x-1 rtl:space-x-reverse text-sm font-medium text-green-600">
 
-                            <span>+ {{moneyFormat($statistics->approvedPaymentsSumToday)}} {{__('Сегодня')}}</span>
+                            <span>+ {{moneyFormat($statistics->usersCountToday)}} {{__('Сегодня')}}</span>
 
                             <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                  fill="currentColor"
@@ -100,14 +100,14 @@
                         </div>
 
                         <div class="text-3xl">
-                            {{moneyFormat($statistics->approvedWithdrawalsSum)}}
+                            {{moneyFormat($statistics->usersCount)}}
                             <span
                                 class="text-xl font-semibold float-right">{{config('payment.default_currency.name')}}</span>
                         </div>
 
                         <div class="flex items-center space-x-1 rtl:space-x-reverse text-sm font-medium text-green-600">
 
-                            <span>+ {{moneyFormat($statistics->approvedWithdrawalsSumToday)}} {{__('Сегодня')}}</span>
+                            <span>+ {{moneyFormat($statistics->usersCountToday)}} {{__('Сегодня')}}</span>
 
                             <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                  fill="currentColor"
@@ -121,7 +121,7 @@
                 </div>
 
             </div>
-            <div class="grid justify-center gap-4 lg:gap-8 md:grid-cols-4">
+            {{-- <div class="grid justify-center gap-4 lg:gap-8 md:grid-cols-4">
                 <div class="w-fit rounded-[25px] bg-white p-8 aspect">
                     <div class="h-12">
                         <svg class="h-full fill-white stroke-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -134,7 +134,7 @@
                     </div>
                     <div class="my-2">
                         <h2 class="text-4xl font-bold">
-                            <span>{{moneyFormat($statistics->approvedPaymentsSumLast7Days)}}</span>
+                            <span>{{moneyFormat($statistics->usersCountLast7Days)}}</span>
                             <span
                                 class="text-xl font-semibold float-right">{{config('payment.default_currency.name')}}</span>
                         </h2>
@@ -156,7 +156,7 @@
                     </div>
                     <div class="my-2">
                         <h2 class="text-4xl font-bold">
-                            <span>{{moneyFormat($statistics->approvedWithdrawalsSumLast7Days)}}</span>
+                            <span>{{moneyFormat($statistics->usersCountLast7Days)}}</span>
                             <span
                                 class="text-xl font-semibold float-right">{{config('payment.default_currency.name')}}</span>
                         </h2>
@@ -177,7 +177,7 @@
                     </div>
                     <div class="my-2">
                         <h2 class="text-4xl font-bold">
-                            <span>{{moneyFormat($statistics->approvedPaymentsSumThisMonth)}}</span>
+                            <span>{{moneyFormat($statistics->usersCountThisMonth)}}</span>
                             <span
                                 class="text-xl font-semibold float-right">{{config('payment.default_currency.name')}}</span>
                         </h2>
@@ -198,7 +198,7 @@
                     </div>
                     <div class="my-2">
                         <h2 class="text-4xl font-bold">
-                            <span>{{moneyFormat($statistics->approvedWithdrawalsSumThisMonth)}}</span>
+                            <span>{{moneyFormat($statistics->usersCountThisMonth)}}</span>
                             <span
                                 class="text-xl font-semibold float-right">{{config('payment.default_currency.name')}}</span>
                         </h2>
@@ -210,7 +210,7 @@
                 </div>
 
 
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection

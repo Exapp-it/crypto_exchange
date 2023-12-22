@@ -26,8 +26,8 @@ class LoginController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
-            'username' => 'required',
-            'password' => 'required',
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ]);
         if (auth()->guard('admin')->attempt($credentials)) {
             return redirect()->route('admin');
@@ -43,9 +43,7 @@ class LoginController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         auth()->guard('admin')->logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
         return redirect()->route('admin.login');

@@ -2,15 +2,13 @@
 
 namespace App\Services\Auth;
 
-use App\Interfaces\AuthServiceInterface;
-use App\Interfaces\Service;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class LoginService implements Service, AuthServiceInterface
+class LoginService
 {
 
     protected const RULES = [

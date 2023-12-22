@@ -10,9 +10,9 @@
             <form method="POST" action="{{ route("admin.login.store") }}" class="space-y-5 mt-5">
                 @csrf
 
-                <input name="username" type="text" class="w-full h-12 bg-black text-yellow-400 focus:ring-0 focus:ring-offset-0  rounded px-3 @error('email') border-red-500 @enderror" placeholder="Логин" />
+                <input name="email" type="email" class="w-full h-12 bg-black text-yellow-400 focus:ring-0 focus:ring-offset-0  rounded px-3 @error('email') border-red-500 @enderror" placeholder="Логин" />
 
-                @error('username')
+                @error('email')
                 <p class="text-red-500">{{ $message }}</p>
                 @enderror
 
