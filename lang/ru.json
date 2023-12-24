@@ -5,10 +5,11 @@
     "Forgot your password?": "Забыли пароль?",
     "Insufficient funds on the balance sheet": "Недостаточно средств на балансе",
     "Link successfully added": "Ссылка успешно добавлена",
-    "Login": "Авторизация",
+    "Sign In": "Авторизация",
+    "Login Form": "Форма Авторизация",
+    "Sign Up": "Регистрация",
     "Registration error": "Ошибка регистрации",
     "Registration successful": "Регистрация прошла успешно",
-    "Register": "Регистрация",
     "User with this email already exists": "Пользователь с таким email адресом уже существует",
     "User with this login already exists": "Пользователь с таким логином уже существует",
     "Buy a link for ": "Купить ссылку за ",
@@ -21,4 +22,3 @@
     "Highlighting a link with a different color": "Выделение ссылки другим цветом",
     "Buying a link": "Покупка ссылки"
 }
-

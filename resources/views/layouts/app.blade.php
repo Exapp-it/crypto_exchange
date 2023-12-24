@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html class="scroll-smooth">
 
 <head>
     <meta charset="utf-8">
@@ -9,31 +9,8 @@
     @vite('resources/js/app.js')
 </head>
 
-<body x-data="Modal()" class="font-main">
-    <div class="w-full mx-auto h-screen grid grid-rows-layout">
-        {{-- header --}}
-        <div class="container mx-auto px-5">
-            @include('layouts.partials.header')
-
-
-            {{-- main --}}
-            <main>
-                @yield('content')
-            </main>
-
-            {{-- footer --}}
-            @include('layouts.partials.footer')
-        </div>
-
-    </div>
-
-
-
-    @include('auth.login-modal')
-    @include('auth.register-modal')
-    @include('auth.forgot-modal')
-
-
+<body class="font-main">
+    @yield('content')
 </body>
 
 </html>

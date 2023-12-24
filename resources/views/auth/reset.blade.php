@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.home')
 
-@section('content')
+@section('home.content')
     <div x-data="Reset()" x-init="() => { state.token = '{{$token}}'; state.email = '{{$email}}' }" class="w-full max-w-lg p-5 mx-auto my-auto rounded-xl shadow-lg bg-white">
         <div class="text-center px-5 flex-auto justify-center">
             <h2 class="text-xl font-bold py-4">{{__('Reset Form')}}</h2>

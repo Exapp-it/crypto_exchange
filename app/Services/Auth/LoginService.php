@@ -90,6 +90,6 @@ class LoginService
 
     private function getCredentials()
     {
-        return ['login' => $this->email, 'password' => $this->password];
+        return ['email' => $this->email, 'password' => $this->password];
     }
 }

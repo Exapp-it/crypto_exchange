@@ -1,31 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.home')
 
 @section('title', __('Home Page'))
 
-@section('content')
-    <section class="text-gray-600 main-font">
-        <div class="flex md:flex-row flex-col items-center">
-            <div
-                class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-                <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Before they sold out
-                    <br class="hidden lg:inline-block">readymade gluten
-                </h1>
-                <p class="mb-8 leading-relaxed">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant
-                    cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic
-                    tumeric truffaut hexagon try-hard chambray.</p>
-                <div class="flex justify-center">
-                    <button
-                        class="items-center block px-10 py-3 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                        Button
-                    </button>
-                </div>
-            </div>
-            <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                <img class="object-cover object-center rounded" alt="hero"
-                    src="{{ asset(Storage::url('images/hero.png')) }}">
-            </div>
-        </div>
-    </section>
+@section('home.content')
 
     <section>
         <h2 class="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl">
@@ -59,7 +36,7 @@
                                         </path>
                                     </svg>
                                 </div>
-                                <input type="text" 
+                                <input type="text"
                                     class="w-full px-5 py-3 pl-10 text-base text-neutral-600 border-none rounded-lg bg-gray-50">
                             </div>
                         </div>
@@ -101,7 +78,7 @@
                                         </path>
                                     </svg>
                                 </div>
-                                <input type="text" 
+                                <input type="text"
                                     class="w-full px-5 py-3 pl-10 text-base text-neutral-600 border-none rounded-lg bg-gray-50">
                             </div>
                         </div>
@@ -122,6 +99,11 @@
         </div>
     </section>
 
+    <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/coinPriceBlock.js"></script>
+    <div id="coinmarketcap-widget-coin-price-block" coins="1,1027,825,1839" currency="USD" theme="light"
+        transparent="false" show-symbol-logo="true">
+    </div>
+
     <section>
         <div class="py-20">
             <div class="text-center">
@@ -141,14 +123,15 @@
     </section>
 
     <section>
-        <div class="py-10">
+        <div class="py-20">
             <h2 class="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl">explore our <br> awesome
                 <span class="text-blue-500">Components</span>
             </h2>
 
             <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-16 md:grid-cols-2 xl:grid-cols-3">
-                <div class="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl dark:bg-gray-800">
-                    <span class="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
+                <div
+                    class="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-500">
+                    <span class="inline-block p-3 text-blue-500 bg-blue-100 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -156,15 +139,15 @@
                         </svg>
                     </span>
 
-                    <h1 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Copy & paste components</h1>
+                    <h1 class="text-xl font-semibold text-gray-700 capitalize">Copy & paste components</h1>
 
-                    <p class="text-gray-500 dark:text-gray-300">
+                    <p class="text-gray-500">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non
                         corrupti doloribus voluptatum eveniet
                     </p>
 
                     <a href="#"
-                        class="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-300 transform dark:text-blue-400 hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+                        class="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-300 transform hover:underline hover:text-blue-600">
                         <span class="mx-1">read more</span>
                         <svg class="w-4 h-4 mx-1 rtl:-scale-x-100" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
@@ -175,8 +158,9 @@
                     </a>
                 </div>
 
-                <div class="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl dark:bg-gray-800">
-                    <span class="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
+                <div
+                    class="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-500">
+                    <span class="inline-block p-3 text-blue-500 bg-blue-100 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -184,15 +168,15 @@
                         </svg>
                     </span>
 
-                    <h1 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Zero Configuration</h1>
+                    <h1 class="text-xl font-semibold text-gray-700 capitalize">Zero Configuration</h1>
 
-                    <p class="text-gray-500 dark:text-gray-300">
+                    <p class="text-gray-500">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non
                         corrupti doloribus voluptatum eveniet
                     </p>
 
                     <a href="#"
-                        class="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-300 transform dark:text-blue-400 hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+                        class="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-300 transform hover:underline hover:text-blue-600">
                         <span class="mx-1">read more</span>
                         <svg class="w-4 h-4 mx-1 rtl:-scale-x-100" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
@@ -203,8 +187,9 @@
                     </a>
                 </div>
 
-                <div class="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl dark:bg-gray-800">
-                    <span class="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
+                <div
+                    class="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl hover:shadow-lg ttransform hover:scale-105 transition duration-500">
+                    <span class="inline-block p-3 text-blue-500 bg-blue-100 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -212,15 +197,15 @@
                         </svg>
                     </span>
 
-                    <h1 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Simple & clean designs</h1>
+                    <h1 class="text-xl font-semibold text-gray-700 capitalize">Simple & clean designs</h1>
 
-                    <p class="text-gray-500 dark:text-gray-300">
+                    <p class="text-gray-500">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non
                         corrupti doloribus voluptatum eveniet
                     </p>
 
                     <a href="#"
-                        class="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-300 transform dark:text-blue-400 hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+                        class="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-300 transform hover:underline hover:text-blue-600">
                         <span class="mx-1">read more</span>
                         <svg class="w-4 h-4 mx-1 rtl:-scale-x-100" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
@@ -232,4 +217,49 @@
                 </div>
             </div>
         </div>
-    @endsection
+    </section>
+
+    <section>
+        <div class="py-20 w-full mx-auto lg:py-40">
+            <div class="flex flex-wrap items-center mx-auto max-w-7xl">
+                <div class="w-full lg:max-w-lg lg:w-1/2 rounded-xl">
+                    <div>
+                        <div class="relative w-full max-w-lg">
+                            <div
+                                class="absolute top-0 rounded-full bg-blue-300 -left-4 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob">
+                            </div>
+
+                            <div
+                                class="absolute rounded-full bg-sky-300 -bottom-24 right-20 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000">
+                            </div>
+                            <div class="relative">
+                                <img class="bject-cover object-center" alt="feature"
+                                    src="{{ asset(Storage::url('images/feature.png')) }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="flex flex-col items-start mt-12 mb-16 text-left lg:flex-grow lg:w-1/2 lg:pl-6 xl:pl-24 md:mb-0 xl:mt-0">
+                    <span class="mb-8 text-xs font-bold tracking-widest text-blue-600 uppercase"> Your tagline </span>
+                    <h1
+                        class="mb-8 text-4xl font-bold leading-none tracking-tighter text-neutral-600 md:text-7xl lg:text-5xl">
+                        Medium length display headline.</h1>
+                    <p class="mb-8 text-base leading-relaxed text-left text-gray-500">Free and Premium themes, UI Kit's,
+                        templates and landing pages built with Tailwind CSS, HTML &amp; Next.js.</p>
+                    <p class="mb-8 text-base leading-relaxed text-left text-gray-500">Free and Premium themes, UI Kit's,
+                        templates and landing pages built with Tailwind CSS, HTML &amp; Next.js.</p>
+                    <div class="flex-col mt-0 lg:mt-6 max-w-7xl sm:flex">
+                        <div class="prose prose-md">
+                            <ul>
+                                <li class="text-gray-500">Ain't no sunshine when she's gone.</li>
+                                <li class="text-gray-500">Expensive feature.</li>
+                                <li class="text-gray-500">Really good feauture.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
