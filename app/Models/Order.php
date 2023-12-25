@@ -16,4 +16,9 @@ class Order extends Model
         'price',
         'quantity',
     ];
+
+    protected $casts = [
+        'open' => 'boolean',
+        'closed' => 'boolean',
+    ];
 }

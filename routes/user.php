@@ -22,6 +22,9 @@ Route::middleware('auth')->group(function () {
 
         Route::get('sell', [TradeController::class, 'sell'])
             ->name('trade.sell');
+
+        Route::post('sell-process', [TradeController::class, 'sellProcess'])
+            ->name('trade.sell.process');
     });
 
     Route::post('logout', [LoginController::class, 'logout'])->name('auth.logout');

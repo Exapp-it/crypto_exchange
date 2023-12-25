@@ -11,7 +11,7 @@
                     <div class="inline-block align-middle md:px-6 lg:px-8">
                         <div class="overflow-hidden bg-white p-10 border border-gray-200 md:rounded-lg shadow-2xl">
                             <div x-data="TradeSell()">
-                                <h1 class="text-3xl font-bold mb-6">{{__('Sell')}} <span x-text="state.from_currency"></span></h1>
+                                <h1 class="text-3xl font-bold mb-6">{{__('Buy')}} <span x-text="state.from_currency"></span></h1>
                                 <div class="mb-4 flex space-x-4">
                                     <div class="my-6">
                                         <label for="quantity"
@@ -87,8 +87,8 @@
                                 </div>
                                 <div class="mt-5">
                                     <button @click="sellAction"
-                                        class="flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-red-600 rounded-xl hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                                        {{ __('Sell') }}
+                                        class="flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                        {{ __('Buy') }}
                                     </button>
                                 </div>
                                 @include('components.alert')

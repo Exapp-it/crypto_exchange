@@ -73,7 +73,7 @@
                                 clip-rule="evenodd"></path>
                         </svg>
                     </div>
-                    <ul x-show="open" x-clock class="py-2 space-y-2 text-center transition duration-300">
+                    <ul x-show="open" x-сloak class="py-2 space-y-2 text-center transition duration-300">
                         <li>
                             <a href="{{ route('trade.buy') }}"
                                 class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-150 rounded-lg group hover:text-blue-600 pl-11">{{ __('Buy') }}</a>
@@ -90,6 +90,17 @@
                 </div>
             </li>
         </ul>
+        <div class="re">
+            <div
+                class="bg-gradient-to-r from-blue-600 to-blue-700 transform flex items-center  py-8 px-6 mb-auto rounded-t-lg">
+                <img class="rounded-full w-20 h-20 ring-4 ring-opacity-20 ring-gray-200" src="{{ img('avatar.png') }}"
+                    alt="Avatar">
+                <div class="ml-5">
+                    <h1 class="text-white tracking-wide text-lg">{{ $user->email }}</h1>
+                    <p class="text-gray-300 tracking-wider text-sm">{{ $user->external_id }}</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script>

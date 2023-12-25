@@ -16,8 +16,10 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->enum('type', ['buy', 'sell']);
             $table->string('currency_pair');
-            $table->decimal('price', 10, 2);
-            $table->decimal('quantity', 18, 10);
+            $table->decimal('price', 18, 8);
+            $table->decimal('quantity', 18, 8);
+            $table->boolean('open')->default(true);
+            $table->boolean('closed')->default(false);
             $table->timestamps();
 
             $table->foreign('user_id')
