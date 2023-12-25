@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Register;
 use Telegram;
+use Wallet;
 
 class RegisterController extends Controller
 {
@@ -24,7 +25,7 @@ class RegisterController extends Controller
             return response()->json(['error' => Register::getErrors()], 422);
         }
 
-        Register::createBalance();
+        Wallet::create(Register::user());
         Register::welcomeMailNotify();
         Telegram::init();
 

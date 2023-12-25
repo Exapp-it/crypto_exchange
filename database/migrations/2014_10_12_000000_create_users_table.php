@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('external_id')->unique();
             $table->string('email')->unique();
             $table->string('password');
 
@@ -30,6 +31,7 @@ return new class extends Migration
                 ->on('users')
                 ->onDelete('set null');
 
+            $table->index('external_id');
             $table->index('email');
             $table->index('referrer_id');
             $table->index('ref_code');

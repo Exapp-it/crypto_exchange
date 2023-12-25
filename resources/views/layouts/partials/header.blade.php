@@ -2,7 +2,7 @@
     <div x-data="{ open: false }" class="flex flex-col py-5 mx-auto md:items-center md:justify-between md:flex-row">
         <div class="flex flex-row items-center justify-between lg:justify-start">
             <a class="text-lg font-bold tracking-tighter text-blue-600 transition duration-500 ease-in-out transform tracking-relaxed lg:pr-8"
-                href="{{ route('home') }}"> <span class="text-green-400 font-bold">P2P</span> Crypto </a>
+                href="{{ route('home') }}"> <span class="text-green-400 font-bold">Crypto</span> Exachange </a>
             <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
                 <svg fill="currentColor" viewBox="0 0 20 20" class="w-8 h-8">
                     <path x-show="!open" fill-rule="evenodd"

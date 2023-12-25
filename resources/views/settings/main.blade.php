@@ -7,7 +7,7 @@
         register: "{{route('auth.register')}}",
         forgot: "{{route('password.email')}}",
         reset: "{{route('password.update')}}",
-        main: "{{route('main')}}",
+        main: "{{route('user')}}",
     }
 
 </script>

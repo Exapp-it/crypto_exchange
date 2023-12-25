@@ -2,7 +2,7 @@
 
 namespace App\Services\Auth;
 
-use App\Models\Balance;
+use App\Models\Wallet;
 use App\Models\Currency;
 use App\Models\User;
 use App\Notifications\WelcomeNotify;
@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Ramsey\Uuid\Uuid;
 
 class RegisterService
 {
@@ -68,6 +69,7 @@ class RegisterService
             DB::beginTransaction();
 
             $this->user = User::create([
+                'external_id' => Uuid::uuid4()->toString(),
                 'email' => $this->email,
                 'password' => Hash::make($this->password),
                 'referrer_id' => $this->getReferrer(),
@@ -84,12 +86,16 @@ class RegisterService
     }
 
 
-    public function createBalance(): void
+    public function createWallet(): void
     {
         $currencies = Currency::where('status', true)->get();
         if ($currencies) {
             foreach ($currencies as $currency) {
-                Balance::create(['user_id' => $this->user->id, 'currency' => $currency->symbol]);
+                Wallet::create([
+                    'user_id' => $this->user->id,
+                    'curr' => $currency->symbol,
+                    'type' => $currency->type,
+                ]);
             }
         }
     }

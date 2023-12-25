@@ -47,19 +47,36 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="lg:flex">
-                            <div x-data="{ iconUrl: '', iconUploaded: false }" class="flex items-center justify-center px-2 py-4 w-full">
-                                <div class="shrink-0" x-show="iconUploaded">
-                                    <img x-bind:src="iconUrl" class="w-20 object-cover rounded"
-                                        alt="Current profile photo" />
-                                </div>
-                                <label class="flex items-center gap-4">
+                        <div class="lg:flex justify-center">
+                            <div x-data="{ iconUrl: '', iconUploaded: false }" class="flex items-center  px-2 py-4 w-full">
+
+                                <label class="flex items-center gap-4 mx-5">
                                     <span class="text-neutral-500 text-sm font-semibold">{{ __('Icon') }}</span>
                                     <input type="file" name="icon"
                                         x-on:change="iconUploaded = true; iconUrl = URL.createObjectURL($event.target.files[0])"
                                         class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-1 file:border-blue-400 file:text-sm file:font-semibold file:bg-blue-50 file:text-black hover:file:bg-blue-400 file:cursor-pointer" />
                                 </label>
+                                <div class="shrink-0" x-show="iconUploaded">
+                                    <img x-bind:src="iconUrl" class="w-20 object-cover rounded"
+                                        alt="Current profile photo" />
+                                </div>
                                 @error('icon')
+                                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="px-2 py-4 w-full">
+                                <label for="type" class="flex items-center space-x-4 text-sm font-medium text-gray-900">
+                                    <span class="text-neutral-500 text-sm font-semibold">{{ __('Type') }}</span>
+                                    <select name="type" id="type"
+                                        class="rounded-lg border-gray-300 text-gray-700 sm:text-sm">
+                                        <option value="">{{ __('Select currency type') }}</option>
+                                        @foreach (walletTypes() as $type => $title)
+                                            <option value="{{ $type }}">{{ $title }}</option>
+                                        @endforeach
+                                    </select>
+                                </label>
+
+                                @error('type')
                                     <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                                 @enderror
                             </div>

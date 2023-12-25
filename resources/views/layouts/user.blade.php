@@ -6,11 +6,17 @@
         @include('layouts.partials.user-header')
         <div class="px-5">
             {{-- main --}}
-            <main class="container mx-auto">
+            <main class="flex my-5 h-screen">
                 @include('layouts.partials.sidebar')
-                @yield('user.content')
+                <div class="bg-gray-100 py-10 w-full mx-5 rounded-lg">
+
+                    @yield('user.content')
+                </div>
             </main>
         </div>
+        {{-- footer --}}
+        @include('layouts.partials.footer')
+
 
     </div>
 @endsection

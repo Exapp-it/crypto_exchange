@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('balances', function (Blueprint $table) {
+        Schema::create('wallets', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->decimal('amount')->default(0);
-            $table->string('currency');
+            $table->decimal('balance', 18, 10)->default(0);
+            $table->string('curr');
+            $table->string('type');
             $table->timestamps();
 
             $table->foreign('user_id')
@@ -23,7 +24,13 @@ return new class extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
+            $table->foreign('curr')
+                ->references('symbol')
+                ->on('currencies')
+                ->onDelete('cascade');
+
             $table->index('user_id');
+            $table->index('curr');
         });
     }
 

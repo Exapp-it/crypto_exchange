@@ -18,9 +18,9 @@
                 @yield('home.content')
             </main>
 
-            {{-- footer --}}
-            @include('layouts.partials.footer')
         </div>
+        {{-- footer --}}
+        @include('layouts.partials.footer')
         @include('auth.login-modal')
         @include('auth.register-modal')
         @include('auth.forgot-modal')

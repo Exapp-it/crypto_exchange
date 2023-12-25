@@ -185,6 +185,8 @@ return [
         'Register' => \App\Facades\RegisterServiceFacade::class,
         'Login' => \App\Facades\LoginServiceFacade::class,
         'Telegram' => \App\Facades\TelegramBotFacade::class,
+        'Wallet' => \App\Facades\WalletServiceFacade::class,
+        'Trade' => \App\Facades\TradeServiceFacade::class,
     ])->toArray(),
 
 ];

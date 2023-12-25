@@ -71,7 +71,7 @@
                         </div>
 
                         <div class="text-3xl">
-                            {{moneyFormat($statistics->usersCount)}}
+                            {{formatCryptoAmount($statistics->usersCount)}}
                             <span
                                 class="text-xl font-semibold float-right">{{config('payment.default_currency.name')}}</span>
                         </div>
@@ -79,7 +79,7 @@
 
                         <div class="flex items-center space-x-1 rtl:space-x-reverse text-sm font-medium text-green-600">
 
-                            <span>+ {{moneyFormat($statistics->usersCountToday)}} {{__('Сегодня')}}</span>
+                            <span>+ {{formatCryptoAmount($statistics->usersCountToday)}} {{__('Сегодня')}}</span>
 
                             <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                  fill="currentColor"
@@ -100,14 +100,14 @@
                         </div>
 
                         <div class="text-3xl">
-                            {{moneyFormat($statistics->usersCount)}}
+                            {{formatCryptoAmount($statistics->usersCount)}}
                             <span
                                 class="text-xl font-semibold float-right">{{config('payment.default_currency.name')}}</span>
                         </div>
 
                         <div class="flex items-center space-x-1 rtl:space-x-reverse text-sm font-medium text-green-600">
 
-                            <span>+ {{moneyFormat($statistics->usersCountToday)}} {{__('Сегодня')}}</span>
+                            <span>+ {{formatCryptoAmount($statistics->usersCountToday)}} {{__('Сегодня')}}</span>
 
                             <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                  fill="currentColor"
@@ -134,7 +134,7 @@
                     </div>
                     <div class="my-2">
                         <h2 class="text-4xl font-bold">
-                            <span>{{moneyFormat($statistics->usersCountLast7Days)}}</span>
+                            <span>{{formatCryptoAmount($statistics->usersCountLast7Days)}}</span>
                             <span
                                 class="text-xl font-semibold float-right">{{config('payment.default_currency.name')}}</span>
                         </h2>
@@ -156,7 +156,7 @@
                     </div>
                     <div class="my-2">
                         <h2 class="text-4xl font-bold">
-                            <span>{{moneyFormat($statistics->usersCountLast7Days)}}</span>
+                            <span>{{formatCryptoAmount($statistics->usersCountLast7Days)}}</span>
                             <span
                                 class="text-xl font-semibold float-right">{{config('payment.default_currency.name')}}</span>
                         </h2>
@@ -177,7 +177,7 @@
                     </div>
                     <div class="my-2">
                         <h2 class="text-4xl font-bold">
-                            <span>{{moneyFormat($statistics->usersCountThisMonth)}}</span>
+                            <span>{{formatCryptoAmount($statistics->usersCountThisMonth)}}</span>
                             <span
                                 class="text-xl font-semibold float-right">{{config('payment.default_currency.name')}}</span>
                         </h2>
@@ -198,7 +198,7 @@
                     </div>
                     <div class="my-2">
                         <h2 class="text-4xl font-bold">
-                            <span>{{moneyFormat($statistics->usersCountThisMonth)}}</span>
+                            <span>{{formatCryptoAmount($statistics->usersCountThisMonth)}}</span>
                             <span
                                 class="text-xl font-semibold float-right">{{config('payment.default_currency.name')}}</span>
                         </h2>

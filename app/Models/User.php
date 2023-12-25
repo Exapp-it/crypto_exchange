@@ -55,6 +55,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'external_id',
         'email',
         'password',
         'referrer_id',
@@ -79,21 +80,20 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
         'password' => 'hashed',
         'active' => 'boolean',
         'blocked' => 'boolean',
     ];
 
 
-    public function balance(): HasMany
+    public function wallets(): HasMany
     {
-        return $this->hasMany(Balance::class);
+        return $this->hasMany(Wallet::class);
     }
 
-    public function balanceAmount(): ?float
+    public function balance(): ?float
     {
-        return $this->balance ? $this->balance->amount : null;
+        return $this->wallets ? $this->wallets->balance : null;
     }
 
     public function referrer(): BelongsTo

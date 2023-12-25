@@ -26,6 +26,9 @@ Route::middleware('admin.auth')->group(function () {
         Route::get('create', [CurrencyController::class, 'create'])
             ->name('admin.currencies.create');
 
+        Route::get('search', [CurrencyController::class, 'search'])
+            ->name('admin.currencies.search');
+
         Route::post('store', [CurrencyController::class, 'store'])
             ->name('admin.currencies.store');
 

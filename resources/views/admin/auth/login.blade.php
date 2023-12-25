@@ -3,27 +3,34 @@
 @section('title', 'Авторизация')
 
 @section('content')
-    <div class="h-screen bg-gray-100 flex flex-col space-y-10 justify-center items-center">
-        <div class="bg-yellow-400 lg:w-96 shadow-xl rounded p-5">
-            <h1 class="text-3xl text-center font-semibold">{{ __('Вход в панель администратора') }}</h1>
-
-            <form method="POST" action="{{ route("admin.login.store") }}" class="space-y-5 mt-5">
+    <div class="mx-auto flex min-h-screen w-full items-center justify-center bg-gray-900 text-white">
+        <section class="flex w-[30rem] flex-col space-y-10">
+            <div class="text-center text-4xl font-medium">Log In</div>
+            <form method="POST" action="{{ route('admin.login.store') }}">
                 @csrf
-
-                <input name="email" type="email" class="w-full h-12 bg-black text-yellow-400 focus:ring-0 focus:ring-offset-0  rounded px-3 @error('email') border-red-500 @enderror" placeholder="Логин" />
-
+                <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
+                    <input type="email" placeholder="Email" name="email" type="email"
+                        class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none @error('email') border-red-500 @enderror" />
+                </div>
                 @error('email')
-                <p class="text-red-500">{{ $message }}</p>
+                    <p class="text-red-500">{{ $message }}</p>
                 @enderror
 
-                <input name="password" type="password" class="w-full h-12 bg-black text-yellow-400 focus:ring-0 focus:ring-offset-0 rounded px-3 @error('password') border-red-500 @enderror" placeholder="Пароль" />
+                <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
+                    <input name="password" type="password" placeholder="Password"
+                        class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none @error('password') border-red-500 @enderror"" />
 
+                </div>
                 @error('password')
-                <p class="text-red-500">{{ $message }}</p>
+                    <p class="text-red-500">{{ $message }}</p>
                 @enderror
 
-                <button type="submit" class="text-center w-full bg-black rounded-md text-yellow-400 py-3 font-medium">Войти</button>
+                <button type="submit"
+                    class="transform rounded-sm w-full mt-3 bg-indigo-600 py-2 font-bold duration-300 hover:bg-indigo-400">
+                    LOG IN
+                </button>
             </form>
-        </div>
+        </section>
     </div>
+
 @endsection

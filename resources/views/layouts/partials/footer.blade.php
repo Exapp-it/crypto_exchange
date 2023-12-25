@@ -1,10 +1,10 @@
-<footer class="bg-white mt-20">
-    <div class="py-5">
+<footer class="w-full bg-white mt-20">
+    <div class="py-5 px-5">
         <div class="lg:flex">
-            <div class="w-full -mx-6 lg:w-2/5">
-                <div class="px-6">
+            <div class="w-full lg:w-2/5">
+                <div class="px-5">
                     <a class="text-lg font-bold tracking-tighter text-blue-600 transition duration-500 ease-in-out transform tracking-relaxed lg:pr-8"
-                        href="{{ route('home') }}"> <span class="text-green-400 font-bold">P2P</span> Crypto </a>
+                        href="{{ route('home') }}">  <span class="text-green-400 font-bold">Crypto</span> Exachange  </a>
 
                     <p class="max-w-sm mt-2 text-gray-500 ">Join 31,000+ other and never miss out on new tips, tutorials,
                         and more.</p>
