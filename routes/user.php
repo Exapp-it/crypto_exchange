@@ -20,6 +20,12 @@ Route::middleware('auth')->group(function () {
         Route::get('buy', [TradeController::class, 'buy'])
             ->name('trade.buy');
 
+        Route::post('buy-process', [TradeController::class, 'buyProcess'])
+            ->name('trade.buy.process');
+
+        Route::post('buy-orders', [TradeController::class, 'buyOrders'])
+            ->name('trade.buy.orders');
+
         Route::get('sell', [TradeController::class, 'sell'])
             ->name('trade.sell');
 

@@ -8,15 +8,10 @@
             {{-- main --}}
             <main class="flex my-5 h-screen">
                 @include('layouts.partials.sidebar')
-                <div class="bg-gray-100 py-10 w-full mx-5 rounded-lg">
-
+                <div class="bg-gray-100 overflow-auto shadow-lg py-10 w-full ml-5 rounded-lg">
                     @yield('user.content')
                 </div>
             </main>
         </div>
-        {{-- footer --}}
-        @include('layouts.partials.footer')
-
-
     </div>
 @endsection

@@ -23,7 +23,6 @@ export default function Modal() {
         closeForgotModal() {
             this.isForgotModalOpen = false;
         },
-
     };
 
 }

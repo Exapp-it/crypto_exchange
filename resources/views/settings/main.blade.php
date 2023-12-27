@@ -10,6 +10,8 @@
         main: "{{ route('user') }}",
         trade: {
             sell: "{{ route('trade.sell.process') }}",
+            buy: "{{ route('trade.buy.process') }}",
+            buyOrders: "{{ route('trade.buy.orders') }}",
         }
     }
 </script>

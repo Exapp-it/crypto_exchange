@@ -2,7 +2,6 @@ import axios from "axios";
 
 export default function LoginComponent() {
     return {
-        state: {
             email: "",
             password: "",
             errors: {
@@ -15,37 +14,36 @@ export default function LoginComponent() {
             },
             showAlert: false,
             alertTimer: null,
-        },
 
         clearErrors() {
-            this.state.errors = {
+            this.errors = {
                 email: "",
                 password: "",
             };
         },
 
         openAlert() {
-            if (!this.state.showAlert) {
-                this.state.showAlert = true;
+            if (!this.showAlert) {
+                this.showAlert = true;
 
-                this.state.alertTimer = setTimeout(() => {
+                this.alertTimer = setTimeout(() => {
                     this.closeAlert();
                 }, 5000);
             }
         },
 
         showError(message) {
-            this.state.message.status = "error";
-            this.state.message.text = message;
+            this.message.status = "error";
+            this.message.text = message;
             this.openAlert();
         },
 
         clearAlertTimer() {
-            clearTimeout(this.state.alertTimer);
+            clearTimeout(this.alertTimer);
         },
 
         closeAlert() {
-            this.state.showAlert = false;
+            this.showAlert = false;
             this.clearAlertTimer();
         },
 
@@ -69,8 +67,8 @@ export default function LoginComponent() {
         processValidationErrors(validationErrors) {
             this.clearErrors();
             Object.keys(validationErrors).forEach((field) => {
-                if (field in this.state.errors) {
-                    this.state.errors[field] = Array.isArray(validationErrors[field]) ? validationErrors[field][0] : "";
+                if (field in this.errors) {
+                    this.errors[field] = Array.isArray(validationErrors[field]) ? validationErrors[field][0] : "";
                 } else {
                     this.showError(validationErrors[field]);
                 }
@@ -78,8 +76,8 @@ export default function LoginComponent() {
         },
 
         handleSuccessResponse(response) {
-            this.state.message.status = response.data.status;
-            this.state.message.text = response.data.message;
+            this.message.status = response.data.status;
+            this.message.text = response.data.message;
             this.openAlert();
 
             setTimeout(() => {
@@ -91,8 +89,8 @@ export default function LoginComponent() {
         async loginAction() {
             try {
                 const response = await axios.post(routes.login, {
-                    email: this.state.email,
-                    password: this.state.password,
+                    email: this.email,
+                    password: this.password,
                     _token: csrfToken,
                 });
 

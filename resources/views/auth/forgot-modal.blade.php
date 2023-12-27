@@ -8,11 +8,11 @@
             <div class="mb-4">
                 <label for="f_email" class="block text-sm font-semibold text-gray-600">{{__('Email')}}</label>
                 <input
-                    x-model="state.email"
+                    x-model="email"
                     type="text"
                     id="f_email"
                     class="form-input w-full mt-1">
-                <span class="text-red-600 text-sm" x-text="state.errors.email"></span>
+                <span class="text-red-600 text-sm" x-text="errors.email"></span>
             </div>
         </div>
         <div class="px-5 mt-2 text-center space-x-5 md:block">

@@ -1,6 +1,6 @@
 <div x-data="{ isFixed: false }">
-    <div class="bg-white shadow-lg rounded-xl w-72 h-full max-w-xs">
-        <div class="bg-gradient-to-r from-blue-600 to-blue-700 transform flex items-center mb-10 py-8 px-6 rounded-t-lg">
+    <div class="hidden lg:block bg-gray-100 shadow-lg rounded-xl w-72 h-full max-w-xs">
+        <div class="transform flex items-center mb-10 py-8 px-6 rounded-lg">
             <img class="rounded-full w-20 h-20 ring-4 ring-opacity-20 ring-gray-200" src="{{ img('avatar.png') }}"
                 alt="Avatar">
             <div class="ml-5">
@@ -90,17 +90,6 @@
                 </div>
             </li>
         </ul>
-        <div class="re">
-            <div
-                class="bg-gradient-to-r from-blue-600 to-blue-700 transform flex items-center  py-8 px-6 mb-auto rounded-t-lg">
-                <img class="rounded-full w-20 h-20 ring-4 ring-opacity-20 ring-gray-200" src="{{ img('avatar.png') }}"
-                    alt="Avatar">
-                <div class="ml-5">
-                    <h1 class="text-white tracking-wide text-lg">{{ $user->email }}</h1>
-                    <p class="text-gray-300 tracking-wider text-sm">{{ $user->external_id }}</p>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <script>
@@ -112,4 +101,5 @@
     //         this.isFixed = scrollPosition >= elementOffset;
     //     });
     // }
+
 </script>

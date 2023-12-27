@@ -1,15 +1,15 @@
 @extends('layouts.user')
 
 @section('user.content')
-    <section class="container px-4 mx-auto">
+    <section class="container px-4 pt-28 mx-auto">
         <div class="flex items-center gap-x-3">
-            <h2 class="text-lg font-medium text-gray-800">{{ __('My wallets') }}</h2>
+           
         </div>
 
         <div class="flex flex-col mt-6">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                    <div class="overflow-hidden border border-gray-200  md:rounded-lg">
+                    <div class="overflow-hidden border border-gray-200 shadow-xl md:rounded-lg">
                         <table class="min-w-full divide-y divide-gray-200 ">
                             <thead class="bg-gray-50 dark:bg-gray-800">
                                 <tr>

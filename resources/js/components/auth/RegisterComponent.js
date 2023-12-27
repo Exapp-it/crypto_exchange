@@ -2,26 +2,24 @@ import axios from "axios";
 
 export default function RegisterComponent() {
     return {
-        state: {
+        email: "",
+        password: "",
+        password_confirmation: "",
+        errors: {
+            login: "",
             email: "",
             password: "",
             password_confirmation: "",
-            errors: {
-                login: "",
-                email: "",
-                password: "",
-                password_confirmation: "",
-            },
-            message: {
-                status: "",
-                text: "",
-            },
-            showAlert: false,
-            alertTimer: null,
         },
+        message: {
+            status: "",
+            text: "",
+        },
+        showAlert: false,
+        alertTimer: null,
 
         clearErrors() {
-            this.state.errors = {
+            this.errors = {
                 email: "",
                 password: "",
                 password_confirmation: "",
@@ -29,27 +27,27 @@ export default function RegisterComponent() {
         },
 
         openAlert() {
-            if (!this.state.showAlert) {
-                this.state.showAlert = true;
+            if (!this.showAlert) {
+                this.showAlert = true;
 
-                this.state.alertTimer = setTimeout(() => {
+                this.alertTimer = setTimeout(() => {
                     this.closeAlert();
                 }, 5000);
             }
         },
 
         showError(message) {
-            this.state.message.status = "error";
-            this.state.message.text = message;
+            this.message.status = "error";
+            this.message.text = message;
             this.openAlert();
         },
 
         clearAlertTimer() {
-            clearTimeout(this.state.alertTimer);
+            clearTimeout(this.alertTimer);
         },
 
         closeAlert() {
-            this.state.showAlert = false;
+            this.showAlert = false;
             this.clearAlertTimer();
         },
 
@@ -76,8 +74,8 @@ export default function RegisterComponent() {
         processValidationErrors(validationErrors) {
             this.clearErrors();
             Object.keys(validationErrors).forEach((field) => {
-                if (field in this.state.errors) {
-                    this.state.errors[field] = Array.isArray(validationErrors[field]) ? validationErrors[field][0] : "";
+                if (field in this.errors) {
+                    this.errors[field] = Array.isArray(validationErrors[field]) ? validationErrors[field][0] : "";
                 } else {
                     this.showError(validationErrors[field]);
                 }
@@ -85,8 +83,8 @@ export default function RegisterComponent() {
         },
 
         handleSuccessResponse(response) {
-            this.state.message.status = response.data.status;
-            this.state.message.text = response.data.message;
+            this.message.status = response.data.status;
+            this.message.text = response.data.message;
             this.openAlert();
 
             setTimeout(() => {
@@ -98,9 +96,9 @@ export default function RegisterComponent() {
         async registerAction() {
             try {
                 const response = await axios.post(routes.register, {
-                    email: this.state.email,
-                    password: this.state.password,
-                    password_confirmation: this.state.password_confirmation,
+                    email: this.email,
+                    password: this.password,
+                    password_confirmation: this.password_confirmation,
                     _token: csrfToken,
                 });
 

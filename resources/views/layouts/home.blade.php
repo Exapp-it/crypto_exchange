@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div x-data="Modal()" class="w-full mx-auto h-screen grid grid-rows-layout">
+    <div x-data="Modal" class="w-full mx-auto h-screen grid grid-rows-layout">
         {{-- header --}}
         <div class="px-5">
 

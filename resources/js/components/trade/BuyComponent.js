@@ -1,14 +1,19 @@
 import axios from "axios";
 
-export default function ResetComponent() {
+export default function BuyComponent() {
     return {
-        token: "",
-        email: "",
-        password: "",
-        password_confirmation: "",
+        quantity: "",
+        from_currency: 'BTC',
+        price: '',
+        total_amount: '',
+        to_currency: 'USD',
+        fee: 0.04,
+        fee_amount: 0,
         errors: {
-            password: "",
-            password_confirmation: "",
+            quantity: "",
+            from_currency: "",
+            price: "",
+            to_currency: "",
         },
         message: {
             status: "",
@@ -19,8 +24,10 @@ export default function ResetComponent() {
 
         clearErrors() {
             this.errors = {
-                password: "",
-                password_confirmation: "",
+                quantity: "",
+                from_currency: "",
+                price: "",
+                to_currency: "",
             };
         },
 
@@ -53,12 +60,10 @@ export default function ResetComponent() {
             window.location.href = url;
         },
 
-        handleResetError(error) {
+        handleBuyError(error) {
             if (error.response && error.response.status === 422) {
                 const validationErrors = error.response.data.error;
-                console.log(validationErrors)
                 if (validationErrors instanceof Object) {
-                    console.log(validationErrors);
                     this.processValidationErrors(validationErrors);
                 } else {
                     this.showError(validationErrors);
@@ -66,7 +71,6 @@ export default function ResetComponent() {
             } else {
                 console.error('Ошибка при отправке запроса:', error);
             }
-
         },
 
         processValidationErrors(validationErrors) {
@@ -87,23 +91,31 @@ export default function ResetComponent() {
 
             setTimeout(() => {
                 this.closeAlert();
-                this.redirect(routes.home);
-            }, 1000);
+            }, 3000);
         },
 
-        async resetAction() {
+        calculate() {
+            this.quantity = this.quantity.slice(0, 8);
+            this.total_amount = (this.quantity * this.price).toString().slice(0, 8);
+            this.fee_amount = (this.quantity * this.fee).toString().slice(0, 8);
+        },
+
+
+
+        async buyAction() {
             try {
-                const response = await axios.post(routes.reset, {
-                    token: this.token,
-                    email: this.email,
-                    password: this.password,
-                    password_confirmation: this.password_confirmation,
+                const response = await axios.post(routes.trade.buy, {
+                    quantity: this.quantity,
+                    from_currency: this.from_currency,
+                    price: this.price,
+                    to_currency: this.to_currency,
                     _token: csrfToken,
                 });
 
                 this.handleSuccessResponse(response);
+                this.$dispatch('updateorder')
             } catch (error) {
-                this.handleResetError(error);
+                this.handleBuyError(error);
             }
         },
     };

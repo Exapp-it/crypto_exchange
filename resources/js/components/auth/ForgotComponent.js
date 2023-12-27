@@ -2,47 +2,46 @@ import axios from "axios";
 
 export default function ForgotComponent() {
     return {
-        state: {
+        email: "",
+        errors: {
             email: "",
-            errors: {
-                email: "",
-            },
-            message: {
-                status: "",
-                text: "",
-            },
-            showAlert: false,
-            alertTimer: null,
         },
+        message: {
+            status: "",
+            text: "",
+        },
+        showAlert: false,
+        alertTimer: null,
 
         clearErrors() {
-            this.state.errors = {
+            this.errors = {
                 email: "",
-            };
+            }
         },
 
-        openAlert() {
-            if (!this.state.showAlert) {
-                this.state.showAlert = true;
 
-                this.state.alertTimer = setTimeout(() => {
+        openAlert() {
+            if (!this.showAlert) {
+                this.showAlert = true;
+
+                this.alertTimer = setTimeout(() => {
                     this.closeAlert();
                 }, 5000);
             }
         },
 
         showError(message) {
-            this.state.message.status = "error";
-            this.state.message.text = message;
+            this.message.status = "error";
+            this.message.text = message;
             this.openAlert();
         },
 
         clearAlertTimer() {
-            clearTimeout(this.state.alertTimer);
+            clearTimeout(this.alertTimer);
         },
 
         closeAlert() {
-            this.state.showAlert = false;
+            this.showAlert = false;
             this.clearAlertTimer();
         },
 
@@ -66,8 +65,8 @@ export default function ForgotComponent() {
         processValidationErrors(validationErrors) {
             this.clearErrors();
             Object.keys(validationErrors).forEach((field) => {
-                if (field in this.state.errors) {
-                    this.state.errors[field] = Array.isArray(validationErrors[field]) ? validationErrors[field][0] : "";
+                if (field in this.errors) {
+                    this.errors[field] = Array.isArray(validationErrors[field]) ? validationErrors[field][0] : "";
                 } else {
                     this.showError(validationErrors[field]);
                 }
@@ -75,8 +74,8 @@ export default function ForgotComponent() {
         },
 
         handleSuccessResponse(response) {
-            this.state.message.status = response.data.status;
-            this.state.message.text = response.data.message;
+            this.message.status = response.data.status;
+            this.message.text = response.data.message;
             this.openAlert();
 
             setTimeout(() => {
@@ -88,7 +87,7 @@ export default function ForgotComponent() {
         async forgotAction() {
             try {
                 const response = await axios.post(routes.forgot, {
-                    email: this.state.email,
+                    email: this.email,
                     _token: csrfToken,
                 });
 
