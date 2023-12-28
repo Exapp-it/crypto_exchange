@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Bots\Telegram;
 use App\Services\Auth\LoginService;
 use App\Services\Auth\RegisterService;
+use App\Services\OrderService;
 use App\Services\WalletService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -17,18 +18,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind('login-service', function () {
-            return new LoginService();
-        });
-        $this->app->bind('register-service', function () {
-            return new RegisterService();
-        });
-        $this->app->bind('wallet-service', function () {
-            return new WalletService();
-        });
-        $this->app->bind('telegram', function () {
-            return new Telegram();
-        });
     }
 
     /**

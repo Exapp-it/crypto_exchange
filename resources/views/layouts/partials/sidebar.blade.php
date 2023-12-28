@@ -42,7 +42,7 @@
                 </a>
             </li>
             <li class="flex items-center text-gray-900 text-md py-4 hover:text-blue-600">
-                <a href="{{ route('trade') }}" class="flex items-center">
+                <a href="{{ route('order') }}" class="flex items-center">
                     <span class="text-gray-400 mr-5 ">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-7 h-7">
@@ -75,11 +75,11 @@
                     </div>
                     <ul x-show="open" x-сloak class="py-2 space-y-2 text-center transition duration-300">
                         <li>
-                            <a href="{{ route('trade.buy') }}"
+                            <a href="{{ route('order.buy') }}"
                                 class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-150 rounded-lg group hover:text-blue-600 pl-11">{{ __('Buy') }}</a>
                         </li>
                         <li>
-                            <a href="{{ route('trade.sell') }}"
+                            <a href="{{ route('order.sell') }}"
                                 class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-150 rounded-lg group hover:text-blue-600 pl-11">{{ __('Sell') }}</a>
                         </li>
                         <li>

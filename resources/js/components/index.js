@@ -1,13 +1,13 @@
 import Alpine from 'alpinejs'
 
-import Modal from '../components/auth/Modal.js'
-import LoginComponent from "../components/auth/LoginComponent.js";
-import ForgotComponent from "../components/auth/ForgotComponent.js";
-import ResetComponent from "../components/auth/ResetComponent.js";
-import RegisterComponent from '../components/auth/RegisterComponent.js'
-import SellComponent from '../components/trade/SellComponent.js';
-import BuyComponent from '../components/trade/BuyComponent.js';
-import OrderComponent from '../components/trade/OrderComponent.js';
+import Modal from './auth/Modal.js'
+import LoginComponent from "./auth/LoginComponent.js";
+import ForgotComponent from "./auth/ForgotComponent.js";
+import ResetComponent from "./auth/ResetComponent.js";
+import RegisterComponent from './auth/RegisterComponent.js'
+import SellComponent from './order/SellComponent.js';
+import BuyComponent from './order/BuyComponent.js';
+import OrderListComponent from './order/ListComponent.js';
 
 
 document.addEventListener('alpine:init', async () => {
@@ -16,9 +16,9 @@ document.addEventListener('alpine:init', async () => {
     Alpine.data('Forgot', ForgotComponent);
     Alpine.data('Reset', ResetComponent);
     Alpine.data('Register', RegisterComponent);
-    Alpine.data('TradeSell', SellComponent);
-    Alpine.data('TradeBuy', BuyComponent);
-    Alpine.data('Order',  OrderComponent);
+    Alpine.data('OrderSell', SellComponent);
+    Alpine.data('OrderBuy', BuyComponent);
+    Alpine.data('OrderList',  OrderListComponent);
 });
 
 

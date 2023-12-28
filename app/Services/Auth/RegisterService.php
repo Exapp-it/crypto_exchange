@@ -31,14 +31,18 @@ class RegisterService
 
     protected User $user;
 
-
-    public function init(array $data = []): static
+    public function __construct(array $data)
     {
         $this->email = $data['email'] ?? '';
         $this->password = $data['password'] ?? '';
         $this->password_confirmation = $data['password_confirmation'] ?? '';
-        return $this;
     }
+
+    public static function init(array $data): static
+    {
+        return new static($data);
+    }
+
 
     public function validate(): bool
     {

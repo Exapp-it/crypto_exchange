@@ -22,11 +22,15 @@ class LoginService
     protected array $errors = [];
     protected bool $fail = false;
 
-    public function init(array $data = []): static
+    public function __construct(array $data)
     {
         $this->email = $data['email'] ?? '';
         $this->password = $data['password'] ?? '';
-        return $this;
+    }
+
+    public static function init(array $data): static
+    {
+        return new static($data);
     }
 
     public function validate(): bool

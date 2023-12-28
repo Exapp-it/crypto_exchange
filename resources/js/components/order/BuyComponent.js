@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default function SellComponent() {
+export default function BuyComponent() {
     return {
         quantity: "",
         from_currency: 'BTC',
@@ -60,7 +60,7 @@ export default function SellComponent() {
             window.location.href = url;
         },
 
-        handleSellError(error) {
+        handleBuyError(error) {
             if (error.response && error.response.status === 422) {
                 const validationErrors = error.response.data.error;
                 if (validationErrors instanceof Object) {
@@ -97,14 +97,14 @@ export default function SellComponent() {
         calculate() {
             this.quantity = this.quantity.slice(0, 8);
             this.total_amount = (this.quantity * this.price).toString().slice(0, 8);
-            this.fee_amount = (this.total_amount * this.fee).toString().slice(0, 8);
+            this.fee_amount = (this.quantity * this.fee).toString().slice(0, 8);
         },
 
 
 
-        async sellAction() {
+        async buyAction() {
             try {
-                const response = await axios.post(routes.trade.sell, {
+                const response = await axios.post(routes.order.buy, {
                     quantity: this.quantity,
                     from_currency: this.from_currency,
                     price: this.price,
@@ -113,8 +113,9 @@ export default function SellComponent() {
                 });
 
                 this.handleSuccessResponse(response);
+                this.$dispatch('updateorder')
             } catch (error) {
-                this.handleSellError(error);
+                this.handleBuyError(error);
             }
         },
     };

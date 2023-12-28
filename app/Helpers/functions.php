@@ -39,7 +39,7 @@ if (!function_exists('languages')) {
 if (!function_exists('walletTypes')) {
     function walletTypes($name = ''): mixed
     {
-        $types = config('wallet.types');
+        $types = config('trade.currencies.types');
         if ($name) {
             return $types[$name];
         }

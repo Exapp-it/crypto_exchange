@@ -2,37 +2,38 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Bots\Telegram;
 use App\Http\Controllers\Controller;
+use App\Services\Auth\RegisterService;
+use App\Services\WalletService;
 use Illuminate\Http\Request;
-use Register;
-use Telegram;
-use Wallet;
+
 
 class RegisterController extends Controller
 {
 
     public function store(Request $request)
     {
-        Register::init($request->all());
+        $service = RegisterService::init($request->all());
 
-        if (!Register::validate()) {
-            return response()->json(['error' => Register::getErrors()], 422);
+        if (!$service->validate()) {
+            return response()->json(['error' => $service->getErrors()], 422);
         }
 
-        Register::store();
+        $service->store();
 
-        if (Register::fail()) {
-            return response()->json(['error' => Register::getErrors()], 422);
+        if ($service->fail()) {
+            return response()->json(['error' => $service->getErrors()], 422);
         }
 
-        Wallet::create(Register::user());
-        Register::welcomeMailNotify();
-        Telegram::init();
+        WalletService::create($service->user());
+        $service->welcomeMailNotify();
+        $bot = Telegram::init();
 
         $message = __('Register new user') . PHP_EOL .
-            __('Email') . ': ' . Register::user()->email;
+            __('Email') . ': ' . $service->user()->email;
 
-        Telegram::sendMessage($message);
-        return Register::responseSuccess();
+        $bot->sendMessage($message);
+        return $service->responseSuccess();
     }
 }

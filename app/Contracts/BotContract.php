@@ -4,7 +4,7 @@ namespace App\Contracts;
 
 interface BotContract
 {
-    public function init(?string $chatId = null, ?string $token = null): void;
+    public static function init(?string $chatId = null, ?string $token = null): static;
 
     public function sendMessage(string $message): void;
 

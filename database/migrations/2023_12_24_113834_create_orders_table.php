@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('currency_pair');
             $table->decimal('price', 18, 8);
             $table->decimal('quantity', 18, 8);
-            $table->boolean('open')->default(true);
-            $table->boolean('closed')->default(false);
+            $table->decimal('total', 18, 8);
+            $table->enum('status', config('trade.order.status'))->default('open');
             $table->timestamps();
 
             $table->foreign('user_id')

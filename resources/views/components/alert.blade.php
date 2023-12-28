@@ -22,7 +22,7 @@
                         x-text="message.status"
                         x-class="{ 'text-green-600': message.status === 'success', 'text-red-600': message.status === 'error' }"
                 ></strong>
-                <p class="mt-1 text-sm text-gray-700" x-text="message.text"></p>
+                <p class="mt-1 text-sm text-gray-700" x-html="message.text"></p>
             </div>
 
             <button @click="closeAlert()" class="text-gray-500 transition hover:text-gray-600">

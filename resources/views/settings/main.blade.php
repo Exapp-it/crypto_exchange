@@ -8,10 +8,10 @@
         forgot: "{{ route('password.email') }}",
         reset: "{{ route('password.update') }}",
         main: "{{ route('user') }}",
-        trade: {
-            sell: "{{ route('trade.sell.process') }}",
-            buy: "{{ route('trade.buy.process') }}",
-            buyOrders: "{{ route('trade.buy.orders') }}",
+        order: {
+            sell: "{{ route('order.sell.process') }}",
+            buy: "{{ route('order.buy.process') }}",
+            listByUser: "{{ route('order.buy.orders') }}",
         }
     }
 </script>

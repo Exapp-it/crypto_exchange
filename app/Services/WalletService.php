@@ -8,7 +8,7 @@ use App\Models\Wallet;
 
 class WalletService
 {
-    public function create(User $user): void
+    public static function create(User $user): void
     {
         $currencies = Currency::where('status', true)->get();
         if ($currencies) {

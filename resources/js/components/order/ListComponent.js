@@ -1,12 +1,12 @@
 import axios from "axios";
 
-export default function OrderComponent() {
+export default function OrderListComponent() {
     return {
         orders: {},
 
         fetchOrders: async function () {
             try {
-                const response = await axios.post(routes.trade.buyOrders);
+                const response = await axios.post(routes.order.listByUser);
                 this.orders = response.data;
             } catch (error) {
                 console.log(error);

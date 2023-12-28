@@ -3,30 +3,30 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Services\Auth\LoginService;
 use Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Login;
 
 class LoginController extends Controller
 {
 
     public function store(Request $request): JsonResponse
     {
-        Login::init($request->all());
+        $service = LoginService::init($request->all());
 
-        if (!Login::validate()) {
-            return response()->json(['error' => Login::getErrors()], 422);
+        if (!$service->validate()) {
+            return response()->json(['error' => $service->getErrors()], 422);
         }
 
-        Login::store();
+        $service->store();
 
-        if (Login::fail()) {
-            return response()->json(['error' => Login::getErrors()], 422);
+        if ($service->fail()) {
+            return response()->json(['error' => $service->getErrors()], 422);
         }
 
-        return Login::responseSuccess();
+        return $service->responseSuccess();
     }
 
     public function logout(): RedirectResponse

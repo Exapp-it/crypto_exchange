@@ -15,10 +15,11 @@ class Order extends Model
         'currency_pair',
         'price',
         'quantity',
+        'total',
+        'status',
     ];
 
     protected $casts = [
-        'open' => 'boolean',
-        'closed' => 'boolean',
+        'status' => 'array',
     ];
 }

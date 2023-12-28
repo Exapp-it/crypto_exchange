@@ -12,7 +12,7 @@ abstract class Bot implements BotContract
 
     protected Client $client;
 
-    abstract public function init(?string $chatId = null, ?string $token = null): void;
+    abstract static public function init(?string $chatId = null, ?string $token = null): static;
 
     abstract public function sendMessage(string $message): void;
 

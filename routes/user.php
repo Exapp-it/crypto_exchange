@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\TradeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\User\MainController;
 
 Route::middleware('auth')->group(function () {
@@ -13,24 +13,24 @@ Route::middleware('auth')->group(function () {
             ->name('user.wallets');
     });
 
-    Route::prefix('trade')->group(function () {
-        Route::get('', [TradeController::class, 'index'])
-            ->name('trade');
+    Route::prefix('order')->group(function () {
+        Route::get('', [OrderController::class, 'index'])
+            ->name('order');
 
-        Route::get('buy', [TradeController::class, 'buy'])
-            ->name('trade.buy');
+        Route::get('buy', [OrderController::class, 'buy'])
+            ->name('order.buy');
 
-        Route::post('buy-process', [TradeController::class, 'buyProcess'])
-            ->name('trade.buy.process');
+        Route::post('buy-process', [OrderController::class, 'buyProcess'])
+            ->name('order.buy.process');
 
-        Route::post('buy-orders', [TradeController::class, 'buyOrders'])
-            ->name('trade.buy.orders');
+        Route::post('buy-orders', [OrderController::class, 'buyOrders'])
+            ->name('order.buy.orders');
 
-        Route::get('sell', [TradeController::class, 'sell'])
-            ->name('trade.sell');
+        Route::get('sell', [OrderController::class, 'sell'])
+            ->name('order.sell');
 
-        Route::post('sell-process', [TradeController::class, 'sellProcess'])
-            ->name('trade.sell.process');
+        Route::post('sell-process', [OrderController::class, 'sellProcess'])
+            ->name('order.sell.process');
     });
 
     Route::post('logout', [LoginController::class, 'logout'])->name('auth.logout');
