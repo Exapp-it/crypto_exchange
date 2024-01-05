@@ -31,6 +31,9 @@ Route::middleware('auth')->group(function () {
 
         Route::post('sell-process', [OrderController::class, 'sellProcess'])
             ->name('order.sell.process');
+
+        Route::post('cancel', [OrderController::class, 'cancel'])
+            ->name('order.cancel');
     });
 
     Route::post('logout', [LoginController::class, 'logout'])->name('auth.logout');

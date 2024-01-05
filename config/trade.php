@@ -14,4 +14,21 @@ return [
             'closed'
         ]
     ],
+
+    'transaction' => [
+        'types' => [
+            'buy',
+            'sell',
+            'deposit',
+            'withdraw',
+            'refund',
+        ],
+        'statuses' => [
+            'fail',
+            'cancel',
+            'wait',
+            'paid',
+            'success',
+        ],
+    ],
 ];

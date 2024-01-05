@@ -11,7 +11,7 @@
                     <div class="inline-block align-middle md:px-6 lg:px-8">
                         <div class="overflow-hidden bg-white p-10 border border-gray-200 md:rounded-lg shadow-2xl">
                             <div x-data="OrderSell">
-                                <h1 class="text-3xl font-bold mb-6">{{ __('Sell') }} <span x-text="from_currency"></span>
+                                <h1 class="text-3xl font-bold mb-6">{{ __('Sell') }} <span x-text="base_currency"></span>
                                 </h1>
                                 <div class="mb-4 flex space-x-4">
                                     <div class="my-6">
@@ -25,11 +25,11 @@
                                         <span class="text-red-600 text-sm" x-text="errors.quantity"></span>
                                     </div>
                                     <div class="my-6">
-                                        <label for="from_currency"
+                                        <label for="base_currency"
                                             class="block text-sm font-semibold text-gray-600">{{ __('From') }}</label>
                                         <div
                                             class="p-2 mt-2 transition duration-500 ease-in-out transform border2 bg-gray-100 md:mx-auto rounded-xl sm:max-w-lg">
-                                            <select id="from_currency" x-model="from_currency"
+                                            <select id="base_currency" x-model="base_currency"
                                                 class="block w-full px-6 py-3 text-base text-neutral-600 placeholder-gray-400 transition duration-500 ease-in-out transform bg-transparent border border-transparent rounded-md focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300">
                                                 @foreach ($currencies as $currency)
                                                     <option value="{{ $currency->symbol }}">
@@ -38,14 +38,14 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <span class="text-red-600 text-sm" x-text="errors.from_currency"></span>
+                                        <span class="text-red-600 text-sm" x-text="errors.base_currency"></span>
                                     </div>
                                 </div>
                                 <div class="mb-4">
                                     <div class="my-3">
                                         <label for="price"
                                             class="block text-sm font-semibold text-gray-600">{{ __('Price per') }} <span
-                                                x-text="from_currency"></span></label>
+                                                x-text="base_currency"></span></label>
                                         <div
                                             class="p-2 mt-2 transition duration-500 ease-in-out transform border2 bg-gray-100 md:mx-auto rounded-xl sm:max-w-lg">
                                             <input @keyup="calculate()" id="price" x-model="price" type="number"
@@ -65,26 +65,26 @@
                                         </div>
                                     </div>
                                     <div class="my-3">
-                                        <label for="to_currency"
+                                        <label for="quote_currency"
                                             class="block text-sm font-semibold text-gray-600">{{ __('To') }}</label>
                                         <div
                                             class="p-2 mt-2 transition duration-500 ease-in-out transform border2 bg-gray-100 md:mx-auto rounded-xl sm:max-w-lg">
-                                            <select id="to_currency" x-model="to_currency"
+                                            <select id="quote_currency" x-model="quote_currency"
                                                 class="block w-full px-6 py-3 text-base text-neutral-600 placeholder-gray-400 transition duration-500 ease-in-out transform bg-transparent border border-transparent rounded-md focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300">
                                                 @foreach ($currencies as $currency)
-                                                    <option :disabled="from_currency === '{{ $currency->symbol }}'"
+                                                    <option :disabled="base_currency === '{{ $currency->symbol }}'"
                                                         value="{{ $currency->symbol }}">
                                                         {{ $currency->symbol }}
                                                     </option>
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <span class="text-red-600 text-sm" x-text="errors.to_currency"></span>
+                                        <span class="text-red-600 text-sm" x-text="errors.quote_currency"></span>
                                     </div>
                                 </div>
                                 <div class="mb-4">
                                     <p class="text-sm font-semibold">Fee: 3.00%</p>
-                                    <p class="text-sm font-semibold" x-text="`${fee_amount}  ${to_currency}`"></p>
+                                    <p class="text-sm font-semibold" x-text="`${fee_amount}  ${base_currency}`"></p>
                                 </div>
                                 <div class="mt-5">
                                     <button @click="sellAction"

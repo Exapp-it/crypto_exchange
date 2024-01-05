@@ -11,5 +11,7 @@ class TradingPair extends Model
 
     protected $fillable = [
         'name',
+        'base_currency',
+        'quote_currency',
     ];
 }

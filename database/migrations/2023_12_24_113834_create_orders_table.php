@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('currency_pair');
             $table->decimal('price', 18, 8);
             $table->decimal('quantity', 18, 8);
+            $table->decimal('amount', 18, 8);
+            $table->decimal('fee', 18, 8)->default(0);
             $table->decimal('total', 18, 8);
             $table->enum('status', config('trade.order.status'))->default('open');
             $table->timestamps();
@@ -25,7 +27,12 @@ return new class extends Migration
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete('cascade');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->index('status');
+            $table->index('user_id');
+            $table->index('type');
         });
     }
 

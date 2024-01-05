@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('trading_pairs', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
+            $table->string('base_currency');
+            $table->string('quote_currency');
             $table->timestamps();
         });
     }

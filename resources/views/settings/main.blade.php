@@ -12,6 +12,7 @@
             sell: "{{ route('order.sell.process') }}",
             buy: "{{ route('order.buy.process') }}",
             listByUser: "{{ route('order.buy.orders') }}",
+            cancel: "{{ route('order.cancel') }}",
         }
     }
 </script>

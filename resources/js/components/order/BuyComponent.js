@@ -3,17 +3,18 @@ import axios from "axios";
 export default function BuyComponent() {
     return {
         quantity: "",
-        from_currency: 'BTC',
+        base_currency: 'BTC',
         price: '',
         total_amount: '',
-        to_currency: 'USD',
-        fee: 0.04,
+        quote_currency: 'USD',
+        fee: 0.03,
         fee_amount: 0,
+        type: '',
         errors: {
             quantity: "",
-            from_currency: "",
+            base_currency: "",
             price: "",
-            to_currency: "",
+            quote_currency: "",
         },
         message: {
             status: "",
@@ -25,9 +26,9 @@ export default function BuyComponent() {
         clearErrors() {
             this.errors = {
                 quantity: "",
-                from_currency: "",
+                base_currency: "",
                 price: "",
-                to_currency: "",
+                quote_currency: "",
             };
         },
 
@@ -97,7 +98,7 @@ export default function BuyComponent() {
         calculate() {
             this.quantity = this.quantity.slice(0, 8);
             this.total_amount = (this.quantity * this.price).toString().slice(0, 8);
-            this.fee_amount = (this.quantity * this.fee).toString().slice(0, 8);
+            this.fee_amount = (this.total_amount * this.fee).toString().slice(0, 8);
         },
 
 
@@ -106,9 +107,9 @@ export default function BuyComponent() {
             try {
                 const response = await axios.post(routes.order.buy, {
                     quantity: this.quantity,
-                    from_currency: this.from_currency,
+                    base_currency: this.base_currency,
                     price: this.price,
-                    to_currency: this.to_currency,
+                    quote_currency: this.quote_currency,
                     _token: csrfToken,
                 });
 
@@ -118,5 +119,19 @@ export default function BuyComponent() {
                 this.handleBuyError(error);
             }
         },
+
+        async orderCancel(order) {
+            try {
+                const response = await axios.post(routes.order.cancel, {
+                    id: order.id,
+                    _token: csrfToken,
+                });
+
+                this.handleSuccessResponse(response);
+                this.$dispatch('updateorder')
+            } catch (error) {
+                this.handleBuyError(error);
+            }
+        }
     };
 }

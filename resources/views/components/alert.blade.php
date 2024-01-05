@@ -1,4 +1,4 @@
-<div x-cloak x-show="showAlert" x-transition.duration.500ms class="top-0 right-0 fixed mt-4 mr-4">
+<div x-cloak x-show="showAlert" x-transition.duration.500ms class="top-0 right-0 fixed  mt-4 mr-4">
     <div role="alert" class="rounded-xl relative border border-gray-100 bg-white p-4 z-50">
         <div class="flex items-start py-3 gap-4">
             <span x-show="message.status === 'success'" class="text-green-600">

@@ -91,11 +91,6 @@ class User extends Authenticatable
         return $this->hasMany(Wallet::class);
     }
 
-    public function balance(): ?float
-    {
-        return $this->wallets ? $this->wallets->balance : null;
-    }
-
     public function referrer(): BelongsTo
     {
         return $this->belongsTo(User::class, 'referrer_id', 'id');
@@ -104,5 +99,15 @@ class User extends Authenticatable
     public function referrals(): HasMany
     {
         return $this->hasMany(User::class, 'referrer_id', 'id');
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 }

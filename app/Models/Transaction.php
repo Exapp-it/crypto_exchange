@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class Transaction extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'user_id',
+        'order_id',
         'type',
         'currency_pair',
-        'price',
-        'quantity',
+        'base_currency',
+        'quote_currency',
         'amount',
         'fee',
         'total',
@@ -26,8 +27,8 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function transactions()
+    public function order()
     {
-        return $this->hasMany(Transaction::class, 'order_id');
+        return $this->belongsTo(Order::class, 'order_id');
     }
 }
